@@ -1,0 +1,21 @@
+{
+  "name": "BAZHDAR & SHAZIN — Love Forever",
+  "short_name": "B & S Love",
+  "description": "Ultra Luxury Romantic Love Website for Bazhdar & Shazin",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#FF1744",
+  "orientation": "portrait-primary",
+  "lang": "ku",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["lifestyle", "entertainment"]
+}
