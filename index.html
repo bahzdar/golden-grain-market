@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="description" content="❤️ BAZHDAR & SHAZIN ❤️ — Love Forever | وێبسایتێکی ئاشقانەی لوکس" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta property="og:title" content="❤️ BAZHDAR & SHAZIN ❤️ — Love Forever" />
+  <meta property="og:description" content="لە دڵمەوە بۆ هەمیشە — Ultra Luxury Romantic Love" />
+  <meta property="og:type" content="website" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>" />
+  <title>❤️ BAZHDAR & SHAZIN ❤️ — Love Forever</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loader" class="loader">
+    <div class="loader-inner">
+      <div class="loader-heart">❤</div>
+      <p class="loader-text">BAZHDAR &amp; SHAZIN</p>
+      <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+      <p class="loader-sub">Love Forever...</p>
+    </div>
+  </div>
+
+  <!-- Canvas Layers -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+  <canvas id="hearts-canvas" aria-hidden="true"></canvas>
+  <div id="three-container" aria-hidden="true"></div>
+
+  <!-- Ambient Light Rays -->
+  <div class="light-rays" aria-hidden="true">
+    <div class="ray r1"></div>
+    <div class="ray r2"></div>
+    <div class="ray r3"></div>
+    <div class="ray r4"></div>
+    <div class="ray r5"></div>
+  </div>
+
+  <!-- Floating Rose Petals Container -->
+  <div id="petals" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="nav glass" id="nav">
+    <a href="#home" class="nav-logo">
+      <span class="nav-heart">❤</span>
+      <span class="nav-names">B &amp; S</span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home" data-i18n="nav_home">سەرەتا</a></li>
+      <li><a href="#story" data-i18n="nav_story">چیرۆک</a></li>
+      <li><a href="#gallery" data-i18n="nav_gallery">گالەری</a></li>
+      <li><a href="#timeline" data-i18n="nav_timeline">کاتەکان</a></li>
+      <li><a href="#letters" data-i18n="nav_letters">نامەکان</a></li>
+      <li><a href="#dreams" data-i18n="nav_dreams">خەونەکان</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-icon" id="music-toggle" aria-label="Music" title="Music">
+        <svg class="icon-music-off" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        <span class="music-slash"></span>
+      </button>
+      <button class="btn-icon" id="lang-toggle" aria-label="Language" title="KU / EN">KU</button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="home" class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal">Love Forever</p>
+      <h1 class="hero-title reveal">
+        <span class="heart-emoji">❤️</span>
+        <span class="names">بەژدار <span class="amp">&amp;</span> شازین</span>
+        <span class="heart-emoji">❤️</span>
+      </h1>
+      <p class="hero-subtitle reveal">لە دڵمەوە بۆ هەمیشە</p>
+      <p class="hero-english reveal">From My Heart, Forever</p>
+
+      <!-- 3D Heart Stage -->
+      <div class="heart-stage reveal" id="heart-stage">
+        <div class="heart-3d" id="heart-3d" title="کلیک بکە ❤">
+          <div class="heart-crystal">
+            <div class="heart-face front"></div>
+            <div class="heart-face back"></div>
+            <div class="heart-core">❤</div>
+            <div class="heart-shine"></div>
+            <div class="heart-sparkles">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+          <div class="heart-ring ring-1"></div>
+          <div class="heart-ring ring-2"></div>
+          <div class="heart-ring ring-3"></div>
+        </div>
+        <p class="heart-hint">کلیک لەسەر دڵ بکە ✨</p>
+      </div>
+
+      <!-- Live Counters -->
+      <div class="counters reveal">
+        <div class="counter-card glass">
+          <span class="counter-value" id="love-days">0</span>
+          <span class="counter-label">ڕۆژی خۆشەویستی</span>
+        </div>
+        <div class="counter-card glass">
+          <span class="counter-value" id="love-hours">0</span>
+          <span class="counter-label">کاتژمێر</span>
+        </div>
+        <div class="counter-card glass">
+          <span class="counter-value" id="love-beats" data-target="∞">∞</span>
+          <span class="counter-label">لێدانی دڵ</span>
+        </div>
+      </div>
+
+      <a href="#story" class="scroll-down reveal" aria-label="Scroll">
+        <span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== LOVE STORY ========== -->
+  <section id="story" class="section story">
+    <div class="section-bg-glow"></div>
+    <div class="container">
+      <header class="section-header reveal">
+        <span class="section-badge">Our Story</span>
+        <h2 class="section-title">چیرۆکی خۆشەویستی</h2>
+        <div class="title-ornament">
+          <span></span><i>❤</i><span></span>
+        </div>
+        <p class="section-desc">دوو دڵ، یەک چیرۆک، هەمیشەیی</p>
+      </header>
+
+      <div class="story-grid">
+        <article class="story-card glass reveal">
+          <div class="story-icon">💫</div>
+          <h3>دەستپێک</h3>
+          <p>
+            کاتێک بەژدار و شازین یەکتریان بینی، وەک ئەوە وایە گەردوون خۆی
+            ئەستێرەکانی ڕێکخستبێت. لە یەکەم سەیرکردنەوە، دڵەکان زانییان
+            کە شتێکی تایبەت دەستی پێکردووە — خۆشەویستییەک کە سنووری کات
+            و شوێن تێدەپەڕێنێت.
+          </p>
+        </article>
+        <article class="story-card glass reveal">
+          <div class="story-icon">🌹</div>
+          <h3>گەشەکردن</h3>
+          <p>
+            ڕۆژ بە ڕۆژ، خۆشەویستییان وەک گوڵێکی سوور گەشەی کرد.
+            پێکەنین، فرمێسک، خەون، و یادەوەری — هەموویان بوونە
+            بەشێک لە تابلۆیەکی جوان کە تەنها ئەوان دەتوانن تێیبگەن.
+            هەر چرکەیەک، گەوهەرێکە لە دڵیاندا.
+          </p>
+        </article>
+        <article class="story-card glass reveal">
+          <div class="story-icon">👑</div>
+          <h3>هەمیشەیی</h3>
+          <p>
+            ئەمڕۆ، بەژدار و شازین پابەندن بە یەکتر. وەعدەکەیان
+            ڕوونە: لە دڵمەوە بۆ هەمیشە. خۆشەویستییان وەک ئەستێرەیەک
+            دەدرەوشێتەوە — بێ کۆتایی، بێ سنوور، و پڕ لە ڕووناکی.
+          </p>
+        </article>
+      </div>
+
+      <blockquote class="love-quote glass reveal">
+        <p>« تۆ نەک تەنها خۆشەویستیم، بەڵکو هەموو هۆکارێکی پێکەنینم،
+        هەموو خەونێکم، و هەموو بەیانییەکی جوانم. »</p>
+        <cite>— بەژدار بۆ شازین</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY ========== -->
+  <section id="gallery" class="section gallery">
+    <div class="container">
+      <header class="section-header reveal">
+        <span class="section-badge">Memories</span>
+        <h2 class="section-title">گالەری یادەوەری</h2>
+        <div class="title-ornament">
+          <span></span><i>❤</i><span></span>
+        </div>
+        <p class="section-desc">وێنەکان بە شێوازی Polaroid — هەر یەکێک چیرۆکێک دەگێڕێتەوە</p>
+      </header>
+
+      <div class="polaroid-wall" id="polaroid-wall">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TIMELINE ========== -->
+  <section id="timeline" class="section timeline">
+    <div class="container">
+      <header class="section-header reveal">
+        <span class="section-badge">Journey</span>
+        <h2 class="section-title">کاتە گرنگەکان</h2>
+        <div class="title-ornament">
+          <span></span><i>❤</i><span></span>
+        </div>
+      </header>
+
+      <div class="timeline-track">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"><span>💕</span></div>
+          <div class="timeline-card glass">
+            <span class="timeline-date">یەکەم ناسین</span>
+            <h3>کاتێک چاومان یەکتر کەوت</h3>
+            <p>ئەو ساتەی کە هەموو شتێک دەستی پێکرد. دوو ڕۆح، یەک ڕێگا. لەو چرکەیەدا گەردوون وەستا.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"><span>💬</span></div>
+          <div class="timeline-card glass">
+            <span class="timeline-date">یەکەم گفتوگۆ</span>
+            <h3>وشەکان بوونە پەیوەندی</h3>
+            <p>یەکەم قسە، یەکەم پێکەنین. دەمانزانی کە ئەم گفتوگۆیە کۆتایی نایەت — هەرگیز.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"><span>✨</span></div>
+          <div class="timeline-card glass">
+            <span class="timeline-date">ڕۆژە گرنگەکان</span>
+            <h3>یادەوەرییە درەوشاوەکان</h3>
+            <p>هەر ڕۆژێک وەک دیارییەک. سەفەر، سەیری ئەستێرە، و ئەو ساتانەی کە کات وەستا.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"><span>💍</span></div>
+          <div class="timeline-card glass">
+            <span class="timeline-date">یادەوەرییەکان</span>
+            <h3>هەمیشە لە دڵماندا</h3>
+            <p>هەر بیرەوەرییەک وەک ئەڵماسێکە. پێکەوە کۆدەکرێنەوە و تاجێکی خۆشەویستی دروست دەکەن.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"><span>♾️</span></div>
+          <div class="timeline-card glass">
+            <span class="timeline-date">ئێستا و هەمیشە</span>
+            <h3>خۆشەویستی بێ کۆتایی</h3>
+            <p>ئەمڕۆ، سبەی، و هەموو ڕۆژێکی داهاتوو — بەژدار و شازین، بۆ هەمیشە.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LOVE LETTERS ========== -->
+  <section id="letters" class="section letters">
+    <div class="container">
+      <header class="section-header reveal">
+        <span class="section-badge">From the Heart</span>
+        <h2 class="section-title">نامە ئاشقانەکان</h2>
+        <div class="title-ornament">
+          <span></span><i>❤</i><span></span>
+        </div>
+      </header>
+
+      <div class="letters-grid">
+        <article class="letter-card glass reveal" data-letter="0">
+          <div class="letter-seal">❤</div>
+          <div class="letter-from">بۆ شازین</div>
+          <h3>نامەی یەکەم</h3>
+          <p class="letter-preview">خۆشەویستەکەم شازین، هەر کاتێک چاوت دەبینم...</p>
+          <button class="letter-open">بیکەرەوە ✉️</button>
+        </article>
+        <article class="letter-card glass reveal" data-letter="1">
+          <div class="letter-seal">❤</div>
+          <div class="letter-from">بۆ بەژدار</div>
+          <h3>نامەی دووەم</h3>
+          <p class="letter-preview">بەژداری دڵم، تۆ ڕووناکیی ژیانمی...</p>
+          <button class="letter-open">بیکەرەوە ✉️</button>
+        </article>
+        <article class="letter-card glass reveal" data-letter="2">
+          <div class="letter-seal">❤</div>
+          <div class="letter-from">بۆ یەکتر</div>
+          <h3>نامەی سێیەم</h3>
+          <p class="letter-preview">پێکەوە، ئێمە هێزین. پێکەوە، ئێمە خۆشەویستین...</p>
+          <button class="letter-open">بیکەرەوە ✉️</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Letter Modal -->
+  <div class="modal" id="letter-modal" role="dialog" aria-modal="true" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-content letter-modal-content glass">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div class="letter-paper">
+        <div class="letter-header-ornament">✦ ❤ ✦</div>
+        <h3 id="modal-letter-title"></h3>
+        <div id="modal-letter-body" class="letter-body"></div>
+        <div class="letter-sign" id="modal-letter-sign"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== FUTURE DREAMS ========== -->
+  <section id="dreams" class="section dreams">
+    <div class="container">
+      <header class="section-header reveal">
+        <span class="section-badge">Tomorrow</span>
+        <h2 class="section-title">خەونەکانی داهاتوو</h2>
+        <div class="title-ornament">
+          <span></span><i>❤</i><span></span>
+        </div>
+        <p class="section-desc">ئەو خەونانەی پێکەوە دەیبینین</p>
+      </header>
+
+      <div class="dreams-grid">
+        <div class="dream-card glass reveal">
+          <div class="dream-icon">🏡</div>
+          <h3>ماڵێکی پڕ لە خۆشەویستی</h3>
+          <p>شوێنێک کە پێکەنین تێیدا دەژیت، و هەر دیوارێک یادەوەرییەک دەپارێزێت.</p>
+        </div>
+        <div class="dream-card glass reveal">
+          <div class="dream-icon">🌍</div>
+          <h3>سەفەری جیهان</h3>
+          <p>لە پاریسەوە بۆ دەریای ناوەڕاست — دەست بە دەست، لە هەموو کەناریکی جیهان.</p>
+        </div>
+        <div class="dream-card glass reveal">
+          <div class="dream-icon">👨‍👩‍👧‍👦</div>
+          <h3>خێزانێکی بچووک</h3>
+          <p>دەستەکانێکی بچووک کە دڵمان پڕ دەکەن، و خۆشەویستییەک کە نەوەکان دەیگوازنەوە.</p>
+        </div>
+        <div class="dream-card glass reveal">
+          <div class="dream-icon">⭐</div>
+          <h3>ئەستێرەکان پێکەوە</h3>
+          <p>هەر شەوێک لە ژێر ئاسماندا، و هەر خەونێک کە بەیانی دەیکەین بە ڕاستی.</p>
+        </div>
+        <div class="dream-card glass reveal">
+          <div class="dream-icon">💎</div>
+          <h3>بەڵێنی هەمیشەیی</h3>
+          <p>ئەڵماسێک، وەعدەیەک، و ژیانێک کە هەر ڕۆژێکی نوێ دەستپێدەکات بە «سڵاو، خۆشەویستەکەم».</p>
+        </div>
+        <div class="dream-card glass reveal">
+          <div class="dream-icon">🌅</div>
+          <h3>پیری پێکەوە</h3>
+          <p>دەستەکان لە دەست، قژ سپیی، و هەمان خۆشەویستی کە ڕۆژی یەکەم دەستی پێکرد.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <section class="finale">
+    <div class="finale-glow"></div>
+    <div class="container reveal">
+      <p class="finale-eyebrow">Forever &amp; Always</p>
+      <h2 class="finale-title">
+        <span>❤️</span> بەژدار &amp; شازین <span>❤️</span>
+      </h2>
+      <p class="finale-sub">لە دڵمەوە بۆ هەمیشە</p>
+      <p class="finale-love-counter">
+        خۆشەویستی ئێمە:
+        <strong id="live-love-counter">1,000,000</strong>
+        جار و زیاتر
+      </p>
+      <button class="btn-luxury" id="fireworks-btn">
+        <span>🎆 تەقەمەنی دڵ 🎆</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-hearts">💕 💖 💗 💓 💝</p>
+      <p class="footer-names">BAZHDAR &amp; SHAZIN</p>
+      <p class="footer-tag">Love Forever — Made with ❤</p>
+      <p class="footer-year">© <span id="year"></span></p>
+    </div>
+  </footer>
+
+  <!-- Audio (Web Audio generated ambient, no external file needed) -->
+  <audio id="bg-music" loop preload="none"></audio>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="js/particles.js" defer></script>
+  <script src="js/heart3d.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
