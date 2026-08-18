@@ -230,6 +230,8 @@
   /* init */
   document.addEventListener("DOMContentLoaded", () => {
     App.render();
+    // hide the boot splash once the app shell is on screen
+    document.body.classList.remove("loading");
     if ("serviceWorker" in navigator && location.protocol === "https:") {
       navigator.serviceWorker.register("sw.js").catch(() => {});
     }

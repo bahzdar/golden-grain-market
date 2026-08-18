@@ -14,10 +14,23 @@
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Amiri+Quran&family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Amiri+Quran&family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Amiri+Quran&family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=Amiri+Quran&family=Scheherazade+New:wght@400;700&family=Playfair+Display:wght@600;700;800&display=swap"></noscript>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* critical boot style: shown instantly, even before css/style.css or any font loads */
+    body.loading #boot { display: grid; }
+    #boot {
+      position: fixed; inset: 0; z-index: 9999; display: none; place-items: center; gap: 12px;
+      background: #08121f; color: #e8c766; font-family: system-ui, sans-serif; font-size: 15px;
+    }
+    #boot .b-ic { width: 44px; height: 44px; animation: bspin 1.4s linear infinite; }
+    @keyframes bspin { to { transform: rotate(360deg); } }
+  </style>
 </head>
-<body>
+<body class="loading">
+  <div id="boot"><svg class="b-ic" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="none" stroke="#e8c766" stroke-width="3" stroke-dasharray="120 68"/><path d="M42 14a20 20 0 1 0 6 25 16 16 0 1 1-6-25z" fill="#e8c766"/></svg><span>قورئانی پیرۆز…</span></div>
   <div id="topbar-root"></div>
   <main id="main"></main>
   <div id="audiobar-root"></div>

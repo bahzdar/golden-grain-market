@@ -1,5 +1,5 @@
 /* Quran Kareem — service worker: offline-first app shell + quran data cache */
-const VERSION = "qk-v1";
+const VERSION = "qk-v2";
 const SHELL = [
   "/", "/index.html", "/css/style.css", "/manifest.webmanifest",
   "/js/i18n.js", "/js/surahs.js", "/js/store.js", "/js/data.js", "/js/hadiths.js",
